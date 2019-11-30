@@ -1,1 +1,325 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Journal
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <span class="col-4"></span>
+            <div class="d-flex justify-content-center col-4">
+                <h2 class="flex-grow p-2">{{date}}</h2>
+                <button type="button" data-toggle="modal" class="btn btn-link" data-target="#dateInput"><i class="far fa-calendar-alt"></i></button>
+            </div>
+        </div>
+        <div class="row">
+            <span class="col-1"></span>
+            <div class="d-flex col-10 meal bHead">
+                <h2 class="mr-auto">Breakfast</h2>
+                <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#bDrop"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+        <div class="row collapse" id="bDrop">
+            <span class="col-1"></span>
+            <div class="col-10 mealContent">
+                <div class="row">
+                    <button class="btn-lg btn-light col-6" data-toggle="modal" data-target="#addBreakfastModal">Add items</button>
+                    <button class="btn-lg btn-light col-6">Auto meal</button>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Calories</th>
+                            <th>Carbs</th>
+                            <th>Protein</th>
+                            <th>Fat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Item #1</td>
+                            <td>360</td>
+                            <td>20g</td>
+                            <td>30g</td>
+                            <td>40g</td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-block">Edit</button>
+                            </td>
+                        </tr>
+                        <tr>
+                                <td>Item #2</td>
+                                <td>360</td>
+                                <td>20g</td>
+                                <td>30g</td>
+                                <td>40g</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-block">Edit</button>
+                                </td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <span class="col-1"></span>
+            <div class="d-flex col-10 meal">
+                <h2 class="mr-auto">Lunch</h2>
+                <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#lDrop"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+        <div class="row collapse" id="lDrop">
+            <span class="col-1"></span>
+            <div class="col-10 mealContent">
+                <div class="row">
+                    <button class="btn-lg btn-light col-6" data-toggle="modal" data-target="#addLunchModal">Add items</button>
+                    <button class="btn-lg btn-light col-6">Auto meal</button>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Calories</th>
+                            <th>Carbs</th>
+                            <th>Protein</th>
+                            <th>Fat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Item #1</td>
+                            <td>360</td>
+                            <td>20g</td>
+                            <td>30g</td>
+                            <td>40g</td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-block">Edit</button>
+                            </td>
+                        </tr>
+                        <tr>
+                                <td>Item #2</td>
+                                <td>360</td>
+                                <td>20g</td>
+                                <td>30g</td>
+                                <td>40g</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-block">Edit</button>
+                                </td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+                <span class="col-1"></span>
+                <div class="d-flex col-10 meal dHead">
+                    <h2 class="mr-auto">Dinner</h2>
+                    <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#dDrop"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+            <div class="row collapse" id="dDrop">
+                <span class="col-1"></span>
+                <div class="col-10 mealContent">
+                    <div class="row">
+                        <button class="btn-lg btn-light col-6" data-toggle="modal" data-target="#addDinnerModal">Add items</button>
+                        <button class="btn-lg btn-light col-6">Auto meal</button>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Calories</th>
+                                <th>Carbs</th>
+                                <th>Protein</th>
+                                <th>Fat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Item #1</td>
+                                <td>360</td>
+                                <td>20g</td>
+                                <td>30g</td>
+                                <td>40g</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-block">Edit</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                    <td>Item #2</td>
+                                    <td>360</td>
+                                    <td>20g</td>
+                                    <td>30g</td>
+                                    <td>40g</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-block">Edit</button>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <div class="modal fade" id="dateInput">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                  
+                    <div class="modal-header">
+                      <h4 class="modal-title">Select a date</h4>
+                      <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/" method="post" id="calendar">
+                            <input autofocus class="form-control" name="date" type="date" min="2019-12-02">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      <button class="btn btn-primary" type="submit" form="calendar">Go</button>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="modal fade" id="addBreakfastModal">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                      
+                        <div class="modal-header">
+                          <h4 class="modal-title">Add items to breakfast</h4>
+                          <button type="button" class="close" data-dismiss="modal">×</button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/" method="post" id="addBreakfast">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <th>Item</th>
+                                        <th>Serving</th>
+                                        <th>Calories</th>
+                                        <th>Carbs</th>
+                                        <th>Fat</th>
+                                        <th>Protein</th>
+                                        <th>Quantity</th>
+                                    </thead>
+                                    {% for item in menu.breakfast %}
+                                        <tr>
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <td>{{item.name}}</td>
+                                                    <td>{{item.quantity}} {{item.unit}}</td>
+                                                    <td>{{item.calories}}</td>
+                                                    <td>{{item.carbs}}</td>
+                                                    <td>{{item.fat}}</td>
+                                                    <td>{{item.protein}}</td>
+                                                </div>
+                                                <td><input type="number" name="{{item.name}}" min=0 class="form-control"></td>
+                                            </div>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                          <button class="btn btn-primary" type="submit" form="addBreakfast">Add</button>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id="addLunchModal">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                          
+                            <div class="modal-header">
+                              <h4 class="modal-title">Add items to lunch</h4>
+                              <button type="button" class="close" data-dismiss="modal">×</button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/" method="post" id="addLunch">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <th>Item</th>
+                                            <th>Serving</th>
+                                            <th>Calories</th>
+                                            <th>Carbs</th>
+                                            <th>Fat</th>
+                                            <th>Protein</th>
+                                            <th>Quantity</th>
+                                        </thead>
+                                        {% for item in menu.lunch %}
+                                            <tr>
+                                                <div class="row">
+                                                    <div class="col-10">
+                                                        <td>{{item.name}}</td>
+                                                        <td>{{item.quantity}} {{item.unit}}</td>
+                                                        <td>{{item.calories}}</td>
+                                                        <td>{{item.carbs}}</td>
+                                                        <td>{{item.fat}}</td>
+                                                        <td>{{item.protein}}</td>
+                                                    </div>
+                                                    <td><input type="number" name="{{item.name}}" min=0 class="form-control"></td>
+                                                </div>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              <button class="btn btn-primary" type="submit" form="addLunch">Add</button>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal fade" id="addDinnerModal">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                              
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Add items to dinner</h4>
+                                  <button type="button" class="close" data-dismiss="modal">×</button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/" method="post" id="addDinner">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <th>Item</th>
+                                                <th>Serving</th>
+                                                <th>Calories</th>
+                                                <th>Carbs</th>
+                                                <th>Fat</th>
+                                                <th>Protein</th>
+                                                <th>Quantity</th>
+                                            </thead>
+                                            {% for item in menu.dinner %}
+                                                <tr>
+                                                    <div class="row">
+                                                        <div class="col-10">
+                                                            <td>{{item.name}}</td>
+                                                            <td>{{item.quantity}} {{item.unit}}</td>
+                                                            <td>{{item.calories}}</td>
+                                                            <td>{{item.carbs}}</td>
+                                                            <td>{{item.fat}}</td>
+                                                            <td>{{item.protein}}</td>
+                                                        </div>
+                                                        <td><input type="number" name="{{item.name}}" min=0 class="form-control"></td>
+                                                    </div>
+                                                </tr>
+                                            {% endfor %}
+                                        </table>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                  <button class="btn btn-primary" type="submit" form="addDinner">Add</button>
+                                </div>
+                                
+                              </div>
+                            </div>
+                          </div>
+
+    </div>
+{% endblock %}
 

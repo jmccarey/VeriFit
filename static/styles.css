@@ -1,1 +1,25 @@
+.meal{
+    background-color:#DDDDDD;
+}
 
+.bHead{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.dHead{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.fa-calendar-alt{
+    font-size:24px;
+}
+
+.mealContent{
+    background-color:#EEEEEE;
+}
+
+input[type=number]::-webkit-inner-spin-button{
+    opacity: 1;
+}
