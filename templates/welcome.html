@@ -5,7 +5,31 @@
 {% endblock %}
 
 {% block main %}
-    <h1>Welcome Page</h1>
+    <div class="container">
+        <div class="welcome-bg"></div>
+        <div class="row">
+            <span class="col-2"></span>
+            <h1 class="col-8 welcome heading text-center">Welcome to VeriFit</h1>
+        </div>
+        <br>
+        <div class="row">
+            <span class="col-2"></span>
+            <h2 class="col-8 welcome subheading text-center">Got Goals?</h2>
+        </div>
+        <br>
+        <div class="row">
+            <span class="col-2"></span>
+            <h2 class="col-8 welcome subheading text-center">We're here to help.</h2>
+        </div>
+        <br>
+        <div class="row">
+            <span class="col-3"></span>
+            <a class="btn btn-link col-2 welcome" href="/register">Register</a>
+            <span class="col-2"></span>
+            <a class="btn btn-link col-2 welcome" href="/login">Log In</a>
+        </div>
+    </div>
+    
 {% endblock %}
 
 
