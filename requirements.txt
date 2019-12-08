@@ -29,7 +29,6 @@ MarkupSafe==1.1.1
 mccabe==0.6.1
 oauth2client==3.0.0
 pexpect==4.7.0
-pkg-resources==0.0.0
 protobuf==3.11.0
 ptyprocess==0.6.0
 pyasn1==0.4.8
@@ -37,16 +36,13 @@ pyasn1-modules==0.2.7
 pycparser==2.19
 pycryptodome==3.4.3
 pylint==2.4.4
-Pyrebase==3.0.27
 python-jwt==2.0.1
 PyYAML==5.2
 requests==2.22.0
 requests-toolbelt==0.7.0
 rsa==4.0
-selenium==3.141.0
 six==1.13.0
 static-parameters==0.4
-submit50==3.0.2
 termcolor==1.1.0
 typed-ast==1.4.0
 urllib3==1.25.7
