@@ -53,7 +53,7 @@ def update(meal, items, user, date, currVal=0):
             db.execute(query, (user, date, item[0]))
     conn.commit()
     conn.close()
-    
+
 def get_options(user):
     """
     Retrieve the a users settings from the database.
@@ -73,7 +73,7 @@ def get_options(user):
         "hash": rec[1],
         "name": rec[2]
     }
-    conn.close(0)
+    conn.close()
     return opt
 
 def update_options(user, opts):
