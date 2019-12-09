@@ -10,6 +10,7 @@ import requests
 from datetime import date as d
 import sqlite3
 
+#Flask setup
 app = Flask(__name__)
 
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -25,7 +26,21 @@ def after_request(response):
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
+"""
+    Login route
+~~~~~~~~~~~~~~~~~~~~~~
+Get request handling:
+- Present a form with email and password fields
 
+Post request handling:
+- Check form inputs against DB to log user in
+
+On success:
+- Go to home
+
+On failure:
+- Reload template with error message
+"""
 @app.route("/login", methods=["GET", "POST"])
 def login():
     session.clear()
@@ -44,6 +59,22 @@ def login():
     else:
         return render_template("login.html")
 
+"""
+Home/Index route
+~~~~~~~~~~~~~~~~~~~
+If logged in:
+- On get request:
+-- Display meal data and menu choices for the current date
+- On post request:
+-- If date form used:
+--- Reload template with meal data and menu for date inputted
+-- If add form used:
+--- Add selected items and quantities to db, reload
+-- If edit form used:
+--- Update selected item in db, reload
+If not logged in:
+- Display welcome page
+"""
 @app.route("/", methods=["GET", "POST"])
 def index():
     if session.get("user_id"):
@@ -113,6 +144,18 @@ def index():
     else:
         return render_template("welcome.html")
 
+"""
+Settings route
+~~~~~~~~~~~~~~~~~~
+On get request:
+- Display current user settings in form inputs
+On post request:
+- Check current password against db
+-- If pass:
+--- Update settings in db, hash new password if given
+-- If fail:
+--- Reload template with error
+"""
 @app.route("/settings", methods=["GET", "POST"])
 @login_required
 def settings():
@@ -150,7 +193,16 @@ def settings():
     else:
         opts= get_options(session.get('user_id'))
         return render_template("settings.html", opts=opts)
-
+ 
+"""
+Goals route:
+~~~~~~~~~~~~~~~~
+On get request:
+- Display current user goals in form inputs
+- If the user has a weight goal, display remaining loss
+On post request:
+- Update user goals on db with input values
+"""
 @app.route("/goals", methods=["GET", "POST"])
 @login_required
 def goals():
@@ -164,6 +216,22 @@ def goals():
         goals = get_goals(session.get("user_id"))
         return render_template("goals.html", goals=goals)
 
+"""
+Register route
+~~~~~~~~~~~~~~~~~~
+On get request:
+- Display registration form
+
+On post request:
+- Check for email & password completion
+- &Check for password and confirmation matching
+- &Check that email is not in DB
+- If above all true:
+-- Add name, email, hashed password to db
+-- Redirect to home
+- If false:
+-- Render template with error
+"""
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -189,6 +257,11 @@ def register():
     else:
         return render_template("register.html")
 
+"""
+Logout route
+~~~~~~~~~~~~~~~
+Clear session, redirect to login
+"""
 @app.route("/logout")
 def logout():
     session.clear()
